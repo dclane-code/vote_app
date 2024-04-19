@@ -33,6 +33,22 @@ def index():
     else:
         return redirect(url_for('login'))
 
+@app.route('/change_voting_code', methods=['GET', 'POST'])
+def change_voting_code():
+    if 'user_id' in session:
+        if request.method == 'POST':
+            new_voting_code = request.form['new_voting_code']
+            db = get_db()
+            cursor = db.cursor()
+            cursor.execute("UPDATE users SET voting_code = ? WHERE id = ?", (new_voting_code, session['user_id']))
+            db.commit()
+            cursor.close()
+            flash('Voting code changed successfully', 'success')
+            return redirect(url_for('index'))
+        return render_template('change_voting_code.html')
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/admin/voting_codes')
 def admin_voting_codes():
     if 'username' in session and session['username'] == 'admin':
