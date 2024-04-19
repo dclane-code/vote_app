@@ -33,6 +33,30 @@ def index():
     else:
         return redirect(url_for('login'))
 
+@app.route('/admin/voting_codes')
+def admin_voting_codes():
+    if 'username' in session and session['username'] == 'admin':
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT id, username, voting_code FROM users")
+        users = cursor.fetchall()
+        cursor.close()
+        return render_template('admin_voting_codes.html', users=users)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/admin/reset_voting_code/<int:user_id>', methods=['POST'])
+def reset_voting_code(user_id):
+    if 'username' in session and session['username'] == 'admin':
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("UPDATE users SET voting_code = 'password' WHERE id = ?", (user_id,))
+        db.commit()
+        cursor.close()
+        flash('Voting code reset successfully', 'success')
+    return redirect(url_for('admin_voting_codes'))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -118,19 +142,6 @@ def vote():
         cursor.close()
 
     return redirect(url_for('index'))
-
-@app.route('/admin/voting_codes')
-def voting_codes():
-    if 'username' in session and session['username'] == 'admin':
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("SELECT username, voting_code FROM users")
-        users = cursor.fetchall()
-        cursor.close()
-        return render_template('voting_codes.html', users=users)
-    else:
-        return redirect(url_for('login'))
-
 
 @app.route('/admin')
 def admin():
