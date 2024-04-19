@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Vote
+{% endblock %}
+{% block content %}
+    <h1>Vote for Best Player</h1>
+    <form action="/vote" method="post">
+        <ul>
+            <li>
+                <span>3 votes</span>
+                <select name="player1" required>
+                    <option value="" selected disabled>Select player</option>
+                    {% for player in available_players %}
+                        <option value="{{ player }}">{{ player }}</option>
+                    {% endfor %}
+                </select>
+		<input type="hidden" name="points1" value="3">
+            </li>
+            <li>
+                <span>2 votes</span>
+                <select name="player2" required>
+                    <option value="" selected disabled>Select player</option>
+                    {% for player in available_players %}
+                        <option value="{{ player }}">{{ player }}</option>
+                    {% endfor %}
+                </select>
+		<input type="hidden" name="points2" value="2">
+            </li>
+            <li>
+                <span>1 vote</span>
+                <select name="player3" required>
+                    <option value="" selected disabled>Select player</option>
+                    {% for player in available_players %}
+                        <option value="{{ player }}">{{ player }}</option>
+                    {% endfor %}
+                </select>
+		<input type="hidden" name="points3" value="1">
+            </li>
+        </ul>
+        <br>
+        <input type="submit" value="Vote">
+    </form>
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout">
+    </form>
+{% endblock %}

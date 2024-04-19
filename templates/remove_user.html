@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+Remove user
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove User</title>
+</head>
+<body>
+    <h1>Remove User</h1>
+    <form action="/admin/remove_user" method="post">
+        <label for="user_id">Select User:</label>
+        <select name="user_id" id="user_id">
+            {% for user in users %}
+                <option value="{{ user[0] }}">{{ user[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <br>
+        <input type="submit" value="Remove User">
+    </form>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}
+

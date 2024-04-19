@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+
+    <h1>Login</h1>
+    <form action="/login" method="post">
+	<ul>
+		<li><label for="username">Username:</label>
+        <select id="username" name="username">
+            {% for username in usernames %}
+                <option value="{{ username }}">{{ username }}</option>
+            {% endfor %}
+	</select></li><li>
+        <label for="voting_code">Voting Code:</label>
+	<input type="password" id="voting_code" name="voting_code" required></li>
+	</ul>
+	<input type="submit" value="Login"></li>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Remove player
+{% endblock %}
+{% block content %}
+    <h1>Remove Player</h1>
+    <form action="/admin/remove_player" method="post">
+        <label for="player_id">Select Player:</label>
+        <select name="player_id" id="player_id">
+            {% for player in players %}
+                <option value="{{ player[0] }}">{{ player[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <br>
+        <input type="submit" value="Remove Player">
+    </form>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Voted users
+{% endblock %}
+{% block content %}
+    <h1>Users Who Have Voted</h1>
+    <ul>
+        {% for user in voted_users %}
+            <li>{{ user[0] }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}
+

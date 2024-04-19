@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin
+{% endblock %}
+{% block content %}
+    <h1>Results</h1>
+    <ul>
+        <li><a href="/admin/results">View Results</a></li>
+        <li><a href="/admin/voted_users">Voted Users</a></li>
+    </ul>
+    <h1>Admin</h1>
+    <ul>
+        <li><a href="/admin/add_user">Add User</a></li>
+        <li><a href="/admin/remove_user">Remove User</a></li>
+        <li><a href="/admin/add_player">Add Player</a></li>
+        <li><a href="/admin/remove_player">Remove Player</a></li>
+        <li><a href="/admin/voting_codes">Voting codes</a></li>
+    </ul>
+	<form action="/admin/reset_votes" method="post">
+	    <input type="submit" value="Reset Votes">
+	</form>
+    <p><a href="/logout">Logout</a></p>
+{% endblock %}

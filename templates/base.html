@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Vote App{% endblock %}</title>
+	<style>
+		/* Style the container with a solid background color */
+		.container {
+			background-color: #0264b4; /* Change to your desired color */
+			width: 100%;
+			height: 300px; /* Adjust the height as needed */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* Style the word */
+		.word {
+			font-size: 36px; /* Adjust the font size as needed */
+			color: white; /* Change to your desired text color */
+		}
+        body {
+		            background-color: #0264b4; /* Set background color to your desired color */
+			                color: white; /* Set text color to white */
+					        }
+	    </style>
+</head>
+<body>
+	<div class="container">
+	<!-- Word centered inside the container -->
+		<div class="word">CL2 B&F</div> <!-- Replace "YourWord" with your desired word -->
+	</div>
+    {% if 'username' in session %}
+        <p>{{ session['username'] }}</p>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

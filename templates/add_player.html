@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add player
+{% endblock %}
+{% block content %}
+
+    <h1>Add Player</h1>
+    <form action="/admin/add_player" method="post">
+        <label for="name">Player Name:</label>
+        <input type="text" name="name" id="name" required><br>
+        <br>
+        <input type="submit" value="Add Player">
+    </form>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add user
+{% endblock %}
+{% block content %}
+    <h1>Add User</h1>
+    <form action="/admin/add_user" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="voting_code">Voting Code:</label>
+        <input type="password" name="voting_code" id="voting_code" required><br>
+        <br>
+        <input type="submit" value="Add User">
+    </form>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}
+

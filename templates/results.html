@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Results
+{% endblock %}
+{% block content %}
+    <h1>Vote Results</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Total Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in vote_results %}
+                <tr>
+                    <td>{{ result[0] }}</td>
+                    <td>{{ result[1] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="/admin">Back to Admin Panel</a></p>
+{% endblock %}
